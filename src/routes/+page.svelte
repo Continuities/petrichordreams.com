@@ -1,16 +1,17 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/card/index.js';
+	import { m } from '../paraglide/messages.js';
 	import Stripe from 'stripe';
 
 	let { data } = $props();
 </script>
 
-<h1 class="my-8 text-4xl">Products</h1>
+<h1 class="my-8 text-4xl">{m.title()}</h1>
 
-<ul class="flex flex-col gap-4">
+<ul class="flex flex-col gap-4 flex-wrap md:flex-row">
 	{#each data.products as product (product.id)}
 		<li>
-			<Card.Root>
+			<Card.Root class="max-w-sm min-w-xs">
 				<img
 					src={product.images[0]}
 					alt={product.name}

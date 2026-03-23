@@ -1,6 +1,7 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.svg';
 	import { onMount } from 'svelte';
+	import { m } from '../paraglide/messages.js';
 	import '../app.css';
 
 	onMount(() => {
@@ -18,7 +19,7 @@
 </script>
 
 <svelte:head>
-	<title>Petrichor Dreams</title>
+	<title>{m.title()}</title>
 	<link rel="icon" href={favicon} />
 	<script>
 		if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -27,6 +28,6 @@
 	</script>
 </svelte:head>
 
-<main class="bg-background min-h-screen text-foreground mx-auto max-w-md p-4">
+<main class="bg-background min-h-screen text-foreground mx-auto max-w-5xl p-4">
 	{@render children()}
 </main>

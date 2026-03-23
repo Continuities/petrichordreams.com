@@ -20,6 +20,7 @@
 <svelte:head>
 	<title>{m.title()}</title>
 	<link rel="icon" href={favicon} />
+	<script async src="//www.instagram.com/embed.js"></script>
 	<script>
 		if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
 			document.documentElement.classList.add('dark');

@@ -1,4 +1,11 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
-  "title": "Petrichor Dreams"
+  "title": "Petrichor Dreams",
+  "description": "Hand crafted jewelry for ritual and everyday wear. Inspired by the beauty of nature and the magic of dreams.",
+  "logo": "Logo",
+  "banner": "Banner",
+  "available": "Ready to Ship Pieces",
+  "footer": "© 2026 Petrichor Dreams",
+  "seePreviousWorks": "See Previous Works",
+  "gallery": "Gallery"
 }

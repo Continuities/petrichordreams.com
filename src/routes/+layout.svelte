@@ -1,16 +1,15 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.svg';
 	import { onMount } from 'svelte';
-	import { m } from '../paraglide/messages.js';
+	import { m } from '$lib/paraglide/messages';
 	import '../app.css';
+	import Header from '$lib/components/ui/header';
 
 	onMount(() => {
 		const media = window.matchMedia('(prefers-color-scheme: dark)');
-
 		const handler = (e: MediaQueryListEvent) => {
 			document.documentElement.classList.toggle('dark', e.matches);
 		};
-
 		media.addEventListener('change', handler);
 		return () => media.removeEventListener('change', handler);
 	});
@@ -28,6 +27,12 @@
 	</script>
 </svelte:head>
 
-<main class="bg-background min-h-screen text-foreground mx-auto max-w-5xl p-4">
+<Header />
+<main class="bg-background min-h-screen text-foreground">
 	{@render children()}
 </main>
+<footer>
+	<div class="max-w-5xl mx-auto py-8 px-4 text-sm">
+		{m.footer()}
+	</div>
+</footer>

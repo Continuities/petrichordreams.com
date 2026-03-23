@@ -15,6 +15,11 @@
 	});
 
 	let { children } = $props();
+	let floatingHeader = $state(false);
+	let scrollingUp = $state(false);
+	let lastScrollY = $state(0);
+	let headerElement: HTMLElement | undefined = $state();
+	let headerHeight = $derived(headerElement?.clientHeight ?? 0);
 </script>
 
 <svelte:head>
@@ -28,8 +33,20 @@
 	</script>
 </svelte:head>
 
-<Header />
-<main class="bg-background min-h-screen text-foreground">
+<svelte:window
+	on:scroll={() => {
+		scrollingUp = window.scrollY < lastScrollY;
+		const scrolledPast = headerElement ? window.scrollY > headerElement.offsetHeight : false;
+		floatingHeader = scrolledPast || scrollingUp;
+		lastScrollY = window.scrollY;
+	}}
+/>
+
+<Header bind:headerElement floating={floatingHeader} shownFloating={scrollingUp} />
+<main
+	style={floatingHeader ? `padding-top: ${headerHeight}px;` : ''}
+	class="bg-background min-h-screen text-foreground"
+>
 	{@render children()}
 </main>
 <footer>

@@ -11,20 +11,22 @@
 	<!-- images column -->
 	<section class="md:w-2/3 flex flex-col gap-4">
 		<img src={piece.images[0]} alt={piece.name} class="hidden md:block object-cover w-full mb-4" />
-		{#if piece.images.length > 1}
-			<Carousel.Root class="md:hidden">
-				<Carousel.Content>
-					{#each piece.images as img (img)}
-						<Carousel.Item>
-							<img src={img} alt={piece.name} class="object-cover w-full" />
-						</Carousel.Item>
-					{/each}
-				</Carousel.Content>
+		<Carousel.Root class="md:hidden">
+			<Carousel.Content>
+				{#each piece.images as img (img)}
+					<Carousel.Item>
+						<img src={img} alt={piece.name} class="object-cover w-full" />
+					</Carousel.Item>
+				{/each}
+			</Carousel.Content>
+			{#if piece.images.length > 1}
 				<div class="flex justify-center gap-4 mt-4">
 					<Carousel.Previous class="static translate-0" variant="ghost" />
 					<Carousel.Next class="static translate-0" variant="ghost" />
 				</div>
-			</Carousel.Root>
+			{/if}
+		</Carousel.Root>
+		{#if piece.images.length > 1}
 			<div class="grid-cols-2 gap-4 hidden md:grid">
 				{#each piece.images.slice(1) as img (img)}
 					<img src={img} alt={piece.name} class="object-cover" />

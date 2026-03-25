@@ -20,7 +20,7 @@
 	</div>
 </section>
 
-<section class="mx-auto max-w-5xl my-16 p-4">
+<section class="mx-auto max-w-5xl my-16 px-4 md:px-0">
 	<h2 class="text-2xl mb-8">{m.available()}</h2>
 	<ul class="grid grid-cols-2 md:grid-cols-4 items-center gap-2 md:gap-4">
 		{#each data.pieces as piece (piece.id)}

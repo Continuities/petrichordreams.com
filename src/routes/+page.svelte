@@ -1,10 +1,11 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import * as Card from '$lib/components/ui/card/index.js';
 	import { m } from '$lib/paraglide/messages';
 	import banner from '$lib/assets/banner.png';
 	import banner2 from '$lib/assets/banner-2.png';
 	import Button from '$lib/components/ui/button/button.svelte';
-	import Product from '$lib/components/ui/product';
+	import PieceCard from '$lib/components/ui/piece-card/index.js';
 
 	let { data } = $props();
 </script>
@@ -22,9 +23,11 @@
 <section class="mx-auto max-w-5xl my-16 p-4">
 	<h2 class="text-2xl mb-8">{m.available()}</h2>
 	<ul class="grid grid-cols-2 md:grid-cols-4 items-center gap-2 md:gap-4">
-		{#each data.products as product (product.id)}
+		{#each data.pieces as piece (piece.id)}
 			<li>
-				<Product {product} />
+				<a href={resolve(`/piece/${piece.id}`)} class="block">
+					<PieceCard {piece} />
+				</a>
 			</li>
 		{/each}
 	</ul>

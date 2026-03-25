@@ -1,3 +1,4 @@
-# allow crawling everything by default
+# disallow everything while the site is still under construction
+# DO NOT FORGET TO REVERT THIS!!
 User-agent: *
-Disallow:
+Disallow: /

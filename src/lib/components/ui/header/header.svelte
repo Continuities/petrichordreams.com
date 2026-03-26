@@ -4,12 +4,17 @@
 	import { Button } from '$lib/components/ui/button';
 	import { HugeiconsIcon } from '@hugeicons/svelte';
 	import { ShoppingBag01Icon, UserIcon } from '@hugeicons/core-free-icons';
+	import { getCart } from '$lib/cart/index.svelte';
+	import Badge from '$lib/components/ui/badge/badge.svelte';
 
 	interface Props {
 		headerElement?: HTMLElement;
 		floating?: boolean;
 		shownFloating?: boolean;
 	}
+
+	let cart = $derived(getCart());
+	let cartSize = $derived(Object.keys(cart).length);
 
 	let { headerElement = $bindable(), floating = false, shownFloating = false }: Props = $props();
 	// eslint-disable-next-line svelte/prefer-writable-derived
@@ -31,8 +36,15 @@
 			<Button size="icon-lg" variant="ghost">
 				<HugeiconsIcon icon={UserIcon} class="size-6" />
 			</Button>
-			<Button size="icon-lg" variant="ghost">
+			<Button size="icon-lg" variant="ghost" class="relative">
 				<HugeiconsIcon icon={ShoppingBag01Icon} class="size-6" />
+				{#if cartSize > 0}
+					<div class="absolute -top-1 -right-1 bounce-in">
+						<Badge class="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums">
+							{cartSize}
+						</Badge>
+					</div>
+				{/if}
 			</Button>
 		</div>
 	</div>
@@ -53,5 +65,22 @@
 	}
 	.shown {
 		transform: translateY(0);
+	}
+	.bounce-in {
+		animation: bounce-in 0.3s ease;
+	}
+
+	@keyframes bounce-in {
+		0% {
+			opacity: 0;
+			transform: scale(0.5);
+		}
+		60% {
+			opacity: 1;
+			transform: scale(1.3);
+		}
+		100% {
+			transform: scale(1);
+		}
 	}
 </style>

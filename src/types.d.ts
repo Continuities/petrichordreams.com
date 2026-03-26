@@ -2,8 +2,10 @@ type Currency = 'CAD';
 
 type CurrencyPrice = Record<Currency, number>;
 
+type PieceId = string;
+
 interface Piece {
-	id: string;
+	id: PieceId;
 	name: string;
 	price: CurrencyPrice;
 	description: string;

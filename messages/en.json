@@ -8,5 +8,11 @@
   "footer": "© 2026 Petrichor Dreams",
   "seePreviousWorks": "See Previous Works",
   "gallery": "Gallery",
-  "addToCart": "Add to Cart"
+  "addToCart": "Add to Cart",
+  "yourCart": "Your cart",
+  "emptyCart": "Your cart is empty.",
+  "checkout": "Checkout",
+  "continueShopping": "Continue Shopping",
+  "estimatedTotal": "Estimated total",
+  "taxesAndShipping": "Taxes and shipping calculated at checkout"
 }

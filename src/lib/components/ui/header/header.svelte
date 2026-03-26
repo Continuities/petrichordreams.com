@@ -6,6 +6,8 @@
 	import { ShoppingBag01Icon, UserIcon } from '@hugeicons/core-free-icons';
 	import { getCart } from '$lib/cart/index.svelte';
 	import Badge from '$lib/components/ui/badge/badge.svelte';
+	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 
 	interface Props {
 		headerElement?: HTMLElement;
@@ -36,7 +38,12 @@
 			<Button size="icon-lg" variant="ghost">
 				<HugeiconsIcon icon={UserIcon} class="size-6" />
 			</Button>
-			<Button size="icon-lg" variant="ghost" class="relative">
+			<Button
+				size="icon-lg"
+				variant="ghost"
+				class="relative"
+				onclick={() => goto(resolve('/cart'))}
+			>
 				<HugeiconsIcon icon={ShoppingBag01Icon} class="size-6" />
 				{#if cartSize > 0}
 					<div class="absolute -top-1 -right-1 bounce-in">

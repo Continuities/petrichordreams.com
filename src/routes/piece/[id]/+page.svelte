@@ -1,8 +1,6 @@
 <script lang="ts">
-	import { m } from '$lib/paraglide/messages';
-	import Button from '$lib/components/ui/button/button.svelte';
 	import * as Carousel from '$lib/components/ui/carousel/index.js';
-	import { addToCart } from '$lib/cart/index.svelte';
+	import AddToCartButton from '$lib/components/ui/add-to-cart-button/add-to-cart-button.svelte';
 
 	let { data } = $props();
 	let { piece } = $derived(data);
@@ -42,7 +40,7 @@
 			<h1 class="text-3xl mb-4">{piece.name}</h1>
 			<p>{piece.description}</p>
 			<p>${piece.price.CAD} CAD</p>
-			<Button onclick={() => addToCart(piece)}>{m.addToCart()}</Button>
+			<AddToCartButton {piece} />
 		</div>
 	</section>
 </div>

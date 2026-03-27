@@ -14,5 +14,7 @@
   "checkout": "Checkout",
   "continueShopping": "Continue Shopping",
   "estimatedTotal": "Estimated total",
-  "taxesAndShipping": "Taxes and shipping calculated at checkout"
+  "taxesAndShipping": "Taxes and shipping calculated at checkout",
+  "itemAddedToCart": "Item added to cart",
+  "viewCart": "View Cart"
 }

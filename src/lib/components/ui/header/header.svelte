@@ -33,7 +33,9 @@
 		: undefined}
 >
 	<div class="flex justify-between items-center max-w-5xl mx-auto py-8 px-4 md:px-0">
-		<img src={logo} alt={m.logo()} class="h-12 w-12" />
+		<a href={resolve('/')}>
+			<img src={logo} alt={m.logo()} class="h-12 w-12" />
+		</a>
 		<div class="flex">
 			<Button size="icon-lg" variant="ghost">
 				<HugeiconsIcon icon={UserIcon} class="size-6" />

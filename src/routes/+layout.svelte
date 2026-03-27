@@ -51,14 +51,18 @@
 />
 
 <Header bind:headerElement floating={floatingHeader} shownFloating={scrollingUp} />
-<main
-	style={floatingHeader ? `padding-top: ${headerHeight}px;` : ''}
-	class="bg-background min-h-screen text-foreground"
+<div
+	style={floatingHeader
+		? `padding-top: ${headerHeight}px;`
+		: `min-height:calc(100vh - ${headerHeight}px)`}
+	class="flex flex-col min-h-screen"
 >
-	{@render children()}
-</main>
-<footer>
-	<div class="max-w-5xl mx-auto py-8 px-4 text-sm">
-		{m.footer()}
-	</div>
-</footer>
+	<main class="bg-background text-foreground">
+		{@render children()}
+	</main>
+	<footer class="mt-auto">
+		<div class="max-w-5xl mx-auto py-8 px-4 text-sm">
+			{m.footer()}
+		</div>
+	</footer>
+</div>

@@ -6,6 +6,7 @@
 	import banner2 from '$lib/assets/banner-2.png';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import PieceCard from '$lib/components/ui/piece-card/index.js';
+	import customImage from '$lib/assets/custom.jpg';
 
 	let { data } = $props();
 </script>
@@ -30,6 +31,17 @@
 				</a>
 			</li>
 		{/each}
+		<li>
+			<a href={resolve('/custom')} class="block">
+				<PieceCard
+					piece={{
+						name: m.custom(),
+						images: [customImage, customImage],
+						description: ''
+					}}
+				/>
+			</a>
+		</li>
 	</ul>
 </section>
 

@@ -2,7 +2,7 @@
 	import * as Card from '$lib/components/ui/card';
 
 	interface Props {
-		piece: Piece;
+		piece: PartialBy<Piece, 'id' | 'price'>;
 	}
 
 	let { piece }: Props = $props();
@@ -22,9 +22,11 @@
 	<Card.Header class="mt-2">
 		<Card.Title>{piece.name}</Card.Title>
 	</Card.Header>
-	<Card.Content>
-		<p>
-			${piece.price.CAD.toFixed(2)} CAD
-		</p>
+	<Card.Content class="min-h-6">
+		{#if piece.price}
+			<p>
+				${piece.price.CAD.toFixed(2)} CAD
+			</p>
+		{/if}
 	</Card.Content>
 </Card.Root>

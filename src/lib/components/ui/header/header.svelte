@@ -3,7 +3,7 @@
 	import { m } from '$lib/paraglide/messages';
 	import { Button } from '$lib/components/ui/button';
 	import { HugeiconsIcon } from '@hugeicons/svelte';
-	import { ShoppingBag01Icon, UserIcon } from '@hugeicons/core-free-icons';
+	import { ShoppingBag01Icon } from '@hugeicons/core-free-icons';
 	import { getCart } from '$lib/cart/index.svelte';
 	import Badge from '$lib/components/ui/badge/badge.svelte';
 	import { goto } from '$app/navigation';

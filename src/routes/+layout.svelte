@@ -5,6 +5,7 @@
 	import '../app.css';
 	import Header from '$lib/components/ui/header';
 	import { loadCartFromCookie } from '$lib/cart/index.svelte';
+	import { PUBLIC_UMAMI_WEBSITE_ID } from '$env/static/public';
 
 	onMount(() => {
 		const media = window.matchMedia('(prefers-color-scheme: dark)');
@@ -33,6 +34,11 @@
 			document.documentElement.classList.add('dark');
 		}
 	</script>
+	<script
+		defer
+		src="https://cloud.umami.is/script.js"
+		data-website-id={PUBLIC_UMAMI_WEBSITE_ID}
+	></script>
 </svelte:head>
 
 <svelte:window

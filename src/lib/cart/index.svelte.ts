@@ -31,6 +31,9 @@ export const saveCartToCookie = (pieceIds: PieceId[]) => {
 };
 
 export const addToCart = (piece: Piece) => {
+	if (cart.includes(piece.id)) {
+		return;
+	}
 	// new cart array to trigger reactivity
 	cart = [...cart, piece.id];
 	saveCartToCookie(cart);

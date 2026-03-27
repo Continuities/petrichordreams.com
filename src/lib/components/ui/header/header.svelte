@@ -36,9 +36,6 @@
 			<img src={logo} alt={m.logo()} class="h-12 w-12" />
 		</a>
 		<div class="flex">
-			<Button size="icon-lg" variant="ghost">
-				<HugeiconsIcon icon={UserIcon} class="size-6" />
-			</Button>
 			<Button
 				size="icon-lg"
 				variant="ghost"

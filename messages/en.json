@@ -37,5 +37,10 @@
   "aboutSubheading": "The soul behind the art",
   "aboutDescription_1": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.",
   "aboutDescription_2": "Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-  "aboutDescription_3": "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate"
+  "aboutDescription_3": "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate",
+  "menu_home": "Home",
+  "menu_custom": "Custom",
+  "menu_rituals": "Rituals",
+  "menu_barter": "Barter",
+  "menu_about": "About"
 }

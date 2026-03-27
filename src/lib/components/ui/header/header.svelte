@@ -16,7 +16,6 @@
 	}
 
 	let cart = $derived(getCart());
-	let cartSize = $derived(Object.keys(cart).length);
 
 	let { headerElement = $bindable(), floating = false, shownFloating = false }: Props = $props();
 	// eslint-disable-next-line svelte/prefer-writable-derived
@@ -47,10 +46,10 @@
 				onclick={() => goto(resolve('/cart'))}
 			>
 				<HugeiconsIcon icon={ShoppingBag01Icon} class="size-6" />
-				{#if cartSize > 0}
+				{#if cart.length > 0}
 					<div class="absolute -top-1 -right-1 bounce-in">
 						<Badge class="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums">
-							{cartSize}
+							{cart.length}
 						</Badge>
 					</div>
 				{/if}

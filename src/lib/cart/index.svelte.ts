@@ -3,54 +3,43 @@
  * @since 2026-03-26
  * @author Michael Townsend <@continuities>
  */
-import { openDB, type IDBPDatabase } from 'idb';
 
-let dbPromise: Promise<IDBPDatabase<unknown>> | undefined = undefined;
-const getDb = () => {
-	if (!dbPromise) {
-		dbPromise = openDB('petrichor-cart', 1, {
-			upgrade(db) {
-				db.createObjectStore('cart', { keyPath: 'id' });
-			}
-		});
+let cart: PieceId[] = $state([]);
+
+export const loadCartFromCookie = (): PieceId[] => {
+	const cartCookie = document.cookie
+		.split('; ')
+		.find((row) => row.startsWith('cart='))
+		?.split('=')[1];
+	if (cartCookie) {
+		try {
+			const loaded = JSON.parse(decodeURIComponent(cartCookie));
+			cart = loaded;
+			return loaded;
+		} catch (e) {
+			console.error('Failed to parse cart from cookie', e);
+		}
 	}
-	return dbPromise;
+	return [];
 };
 
-let cart: Record<PieceId, Piece> = $state({});
-
-export const loadCart = async () => {
-	const db = await getDb();
-	const allPieces = await db.getAll('cart');
-	cart = Object.fromEntries(allPieces.map((piece) => [piece.id, piece]));
-};
-
-export const savePiece = async (piece: Piece) => {
-	const db = await getDb();
-	const tx = db.transaction('cart', 'readwrite');
-	const store = tx.objectStore('cart');
-	await store.put(piece);
-	await tx.done;
-};
-
-export const deletePiece = async (pieceId: PieceId) => {
-	const db = await getDb();
-	const tx = db.transaction('cart', 'readwrite');
-	const store = tx.objectStore('cart');
-	await store.delete(pieceId);
-	await tx.done;
+export const saveCartToCookie = (pieceIds: PieceId[]) => {
+	// eslint-disable-next-line svelte/prefer-svelte-reactivity
+	const expires = new Date();
+	expires.setTime(expires.getTime() + 7 * 24 * 60 * 60 * 1000); // 7 days
+	document.cookie = `cart=${encodeURIComponent(JSON.stringify(pieceIds))}; expires=${expires.toUTCString()}; path=/`;
 };
 
 export const addToCart = (piece: Piece) => {
-	savePiece(piece);
-	// new cart object to trigger reactivity
-	cart = { ...cart, [piece.id]: piece };
+	// new cart array to trigger reactivity
+	cart = [...cart, piece.id];
+	saveCartToCookie(cart);
 };
 
 export const removeFromCart = (pieceId: PieceId) => {
-	deletePiece(pieceId);
-	// new cart object to trigger reactivity
-	cart = Object.fromEntries(Object.entries(cart).filter(([id]) => id !== pieceId));
+	// new cart array to trigger reactivity
+	cart = cart.filter((id) => id !== pieceId);
+	saveCartToCookie(cart);
 };
 
 export const getCart = () => cart;

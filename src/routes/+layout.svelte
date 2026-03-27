@@ -4,7 +4,7 @@
 	import { m } from '$lib/paraglide/messages';
 	import '../app.css';
 	import Header from '$lib/components/ui/header';
-	import { loadCart } from '$lib/cart/index.svelte';
+	import { loadCartFromCookie } from '$lib/cart/index.svelte';
 
 	onMount(() => {
 		const media = window.matchMedia('(prefers-color-scheme: dark)');
@@ -12,7 +12,7 @@
 			document.documentElement.classList.toggle('dark', e.matches);
 		};
 		media.addEventListener('change', handler);
-		loadCart();
+		loadCartFromCookie();
 		return () => media.removeEventListener('change', handler);
 	});
 

@@ -31,7 +31,7 @@
 		</Drawer.Header>
 		<Drawer.Footer class="flex flex-col gap-4">
 			<Button variant="outline" onclick={() => goto(resolve('/cart'))}>{m.viewCart()}</Button>
-			<Button onclick={() => console.log('TODO')}>{m.checkout()}</Button>
+			<Button onclick={() => goto(resolve('/checkout'))}>{m.checkout()}</Button>
 			<Button variant="ghost" onclick={() => (show = false)}>{m.continueShopping()}</Button>
 		</Drawer.Footer>
 	</Drawer.Content>

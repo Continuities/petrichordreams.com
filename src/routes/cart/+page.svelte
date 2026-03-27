@@ -5,6 +5,7 @@
 	import { m } from '$lib/paraglide/messages';
 	import { Delete02Icon } from '@hugeicons/core-free-icons';
 	import { HugeiconsIcon } from '@hugeicons/svelte';
+	import { goto } from '$app/navigation';
 
 	let cart = $derived(getCart());
 	let items = $derived(Object.values(cart));
@@ -53,7 +54,9 @@
 				</p>
 			</div>
 			<p class="text-sm">{m.taxesAndShipping()}</p>
-			<Button size="lg" class="w-full">{m.checkout()}</Button>
+			<Button size="lg" class="w-full" onclick={() => goto(resolve('/checkout'))}
+				>{m.checkout()}</Button
+			>
 		</div>
 	{/if}
 </section>

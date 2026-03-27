@@ -16,5 +16,7 @@
   "estimatedTotal": "Estimated total",
   "taxesAndShipping": "Taxes and shipping calculated at checkout",
   "itemAddedToCart": "Item added to cart",
-  "viewCart": "View Cart"
+  "viewCart": "View Cart",
+  "thanks": "Thank you for your purchase!",
+  "thanksDetails": "Your order has been received and is being processed. We will send you a confirmation email shortly."
 }

@@ -6,6 +6,8 @@
 	import Header from '$lib/components/ui/header';
 	import { loadCartFromCookie } from '$lib/cart/index.svelte';
 	import { PUBLIC_UMAMI_WEBSITE_ID } from '$env/static/public';
+	import { HugeiconsIcon } from '@hugeicons/svelte';
+	import { InstagramIcon } from '@hugeicons/core-free-icons';
 
 	onMount(() => {
 		const media = window.matchMedia('(prefers-color-scheme: dark)');
@@ -60,9 +62,10 @@
 	<main class="bg-background text-foreground">
 		{@render children()}
 	</main>
-	<footer class="mt-auto">
-		<div class="max-w-5xl mx-auto py-8 px-4 text-sm">
-			{m.footer()}
-		</div>
+	<footer class="mt-auto flex flex-col items-center py-8 gap-8">
+		<a href="https://www.instagram.com/petrichor.weaves" target="_blank">
+			<HugeiconsIcon icon={InstagramIcon} class="size-6" />
+		</a>
+		{m.footer()}
 	</footer>
 </div>

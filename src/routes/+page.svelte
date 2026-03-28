@@ -39,7 +39,7 @@
 				<PieceCard
 					piece={{
 						name: m.custom(),
-						images: [customImage, customImage],
+						images: [customImage],
 						description: ''
 					}}
 				/>

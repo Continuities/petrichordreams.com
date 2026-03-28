@@ -10,10 +10,8 @@
 </script>
 
 <Drawer.Root direction="left" bind:open>
-	<Drawer.Trigger>
-		<Button size="icon-lg" variant="ghost" class="md:hidden">
-			<HugeiconsIcon icon={Menu01Icon} class="size-6" />
-		</Button>
+	<Drawer.Trigger class="md:hidden">
+		<HugeiconsIcon icon={Menu01Icon} class="size-6" />
 	</Drawer.Trigger>
 	<Drawer.Content>
 		<img src={logoImg} alt="Logo" class="h-12 w-12 absolute top-8 left-8" />

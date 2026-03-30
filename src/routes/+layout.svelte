@@ -5,7 +5,7 @@
 	import '../app.css';
 	import Header from '$lib/components/ui/header';
 	import { loadCartFromCookie } from '$lib/cart/index.svelte';
-	import { PUBLIC_UMAMI_WEBSITE_ID } from '$env/static/public';
+	import { PUBLIC_INSTAGRAM_USERNAME, PUBLIC_UMAMI_WEBSITE_ID } from '$env/static/public';
 	import { HugeiconsIcon } from '@hugeicons/svelte';
 	import { InstagramIcon } from '@hugeicons/core-free-icons';
 
@@ -63,7 +63,7 @@
 		{@render children()}
 	</main>
 	<footer class="mt-auto flex flex-col items-center py-8 gap-8">
-		<a href="https://www.instagram.com/petrichor.weaves" target="_blank">
+		<a href={`https://www.instagram.com/${PUBLIC_INSTAGRAM_USERNAME}`} target="_blank">
 			<HugeiconsIcon icon={InstagramIcon} class="size-6" />
 		</a>
 		{m.footer()}

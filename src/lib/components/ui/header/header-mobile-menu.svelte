@@ -5,6 +5,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import HeaderMenuLinks from './header-menu-links.svelte';
 	import logoImg from '$lib/assets/logo.png';
+	import { PUBLIC_INSTAGRAM_USERNAME } from '$env/static/public';
 
 	let open: boolean = $state(false);
 </script>
@@ -28,7 +29,7 @@
 			class="flex flex-col gap-8 ml-6 mt-32 text-xl"
 		/>
 		<Button
-			href="https://www.instagram.com/petrichor.weaves/"
+			href={`https://www.instagram.com/${PUBLIC_INSTAGRAM_USERNAME}/`}
 			target="_blank"
 			variant="ghost"
 			class="absolute bottom-8 left-8"

@@ -5,6 +5,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import { m } from '$lib/paraglide/messages';
 	import PieceCard from '$lib/components/ui/piece-card';
+	import { PUBLIC_INSTAGRAM_USERNAME } from '$env/static/public';
 
 	let { data } = $props();
 </script>
@@ -18,7 +19,15 @@
 		</Card.Header>
 		<Card.Content>
 			<p class="mb-6">{m.seeMoreOnIntagram()}</p>
-			<Button size="lg" class="text-md" href={resolve('/gallery')}>@petrichor.weaves</Button>
+			<Button
+				size="lg"
+				class="text-md"
+				href={`https://www.instagram.com/${PUBLIC_INSTAGRAM_USERNAME}/`}
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				@{PUBLIC_INSTAGRAM_USERNAME}
+			</Button>
 		</Card.Content>
 	</Card.Root>
 </section>

@@ -17,10 +17,8 @@
 			class="object-cover w-full h-full object-cover absolute top-0 transition-all duration-400 opacity-0 scale-100 group-hover:opacity-100 group-hover:scale-105"
 		/>
 	</div>
-	<Card.Header class="mt-2">
+	<Card.Content class="min-h-12">
 		<Card.Title>{piece.name}</Card.Title>
-	</Card.Header>
-	<Card.Content class="min-h-6">
 		{#if piece.price}
 			<p>
 				${piece.price.CAD.toFixed(2)} CAD

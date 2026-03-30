@@ -74,3 +74,46 @@ export async function createCheckoutSession(pieces: Piece[]): Promise<string> {
 		throw error;
 	}
 }
+
+export async function getCheckoutSession(sessionId: string) {
+	try {
+		const session = await stripe.checkout.sessions.retrieve(sessionId, {
+			expand: ['line_items.data.price.product']
+		});
+		return session;
+	} catch (error) {
+		console.error(`Error fetching checkout session with ID ${sessionId}:`, error);
+		throw error;
+	}
+}
+
+export async function getPurchasedPieces(sessionId: string): Promise<Piece[]> {
+	try {
+		const session = await getCheckoutSession(sessionId);
+		const pieces: Piece[] = session.line_items?.data
+			.map((item) => {
+				const product = item.price?.product;
+				return product ? productToPiece(product as Stripe.Product) : null;
+			})
+			.filter(Boolean) as Piece[];
+		return pieces;
+	} catch (error) {
+		console.error(`Error fetching purchased pieces for session ID ${sessionId}:`, error);
+		throw error;
+	}
+}
+
+export async function markPiecesAsPurchased(pieces: Piece[]) {
+	try {
+		await Promise.all(
+			pieces.map((piece) =>
+				stripe.products.update(piece.id, {
+					active: false
+				})
+			)
+		);
+	} catch (error) {
+		console.error('Error marking pieces as purchased:', error);
+		throw error;
+	}
+}

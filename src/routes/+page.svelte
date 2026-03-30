@@ -40,7 +40,8 @@
 					piece={{
 						name: m.custom(),
 						images: [customImage],
-						description: ''
+						description: '',
+						sold: true
 					}}
 				/>
 			</a>
@@ -90,7 +91,7 @@
 			<Card.Title class="text-2xl">{m.seePreviousWorks()}</Card.Title>
 		</Card.Header>
 		<Card.Content>
-			<Button size="lg" class="text-xl">{m.gallery()}</Button>
+			<Button size="lg" class="text-xl" href={resolve('/gallery')}>{m.gallery()}</Button>
 		</Card.Content>
 	</Card.Root>
 </section>

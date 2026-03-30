@@ -13,4 +13,5 @@ interface Piece {
 	price: CurrencyPrice;
 	description: string;
 	images: string[];
+	sold: boolean;
 }

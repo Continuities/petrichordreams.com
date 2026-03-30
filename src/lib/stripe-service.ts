@@ -23,14 +23,15 @@ const productToPiece = (product: Stripe.Product): Piece => ({
 	id: product.id,
 	name: product.name,
 	price: getPrice(product),
+	sold: !product.active,
 	description: product.description ?? '',
 	images: [product.images[0], ...(product.metadata.images?.split(',') ?? [])]
 });
 
-export async function getPieces(): Promise<Piece[]> {
+export async function getPieces(active?: boolean): Promise<Piece[]> {
 	try {
-		const products = await stripe.products.list({ active: true, expand: ['data.default_price'] });
-		return products.data.map(productToPiece);
+		const products = await stripe.products.list({ active, expand: ['data.default_price'] });
+		return products.data.filter((p) => p.metadata['hidden'] !== 'true').map(productToPiece);
 	} catch (error) {
 		console.error('Error fetching products:', error);
 		throw error;

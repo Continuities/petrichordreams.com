@@ -39,8 +39,10 @@
 		<div class="md:sticky md:top-8 flex flex-col gap-4">
 			<h1 class="text-3xl mb-4">{piece.name}</h1>
 			<p>{piece.description}</p>
-			<p>${piece.price.CAD} CAD</p>
-			<AddToCartButton {piece} />
+			{#if !piece.sold}
+				<p>${piece.price.CAD} CAD</p>
+				<AddToCartButton {piece} />
+			{/if}
 		</div>
 	</section>
 </div>

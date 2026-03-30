@@ -21,4 +21,7 @@
 	<li>
 		<HeaderLink href={resolve('/about')} label={m.menu_about()} />
 	</li>
+	<li>
+		<HeaderLink href={resolve('/gallery')} label={m.gallery()} />
+	</li>
 </ul>

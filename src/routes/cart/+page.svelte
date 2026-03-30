@@ -1,15 +1,20 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { removeFromCart } from '$lib/cart/index.svelte';
+	import { loadCartFromCookie, removeFromCart } from '$lib/cart/index.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import { m } from '$lib/paraglide/messages';
 	import { Delete02Icon } from '@hugeicons/core-free-icons';
 	import { HugeiconsIcon } from '@hugeicons/svelte';
 	import { goto, invalidateAll } from '$app/navigation';
+	import { onMount } from 'svelte';
 
 	let { data } = $props();
 	let pieces = $derived(data.pieces);
 	let total = $derived(pieces.reduce((total, item) => total + item.price.CAD, 0));
+	onMount(() => {
+		// Might have removed unavailable items on the server
+		loadCartFromCookie();
+	});
 </script>
 
 <section class="mx-auto max-w-5xl my-8 px-4 md:px-0">

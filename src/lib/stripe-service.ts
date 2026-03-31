@@ -21,12 +21,18 @@ const getPrice = (product: Stripe.Product): CurrencyPrice => {
 	};
 };
 
+const getLocalisedValue = (product: Stripe.Product, key: string): string | null => {
+	const locale = getLocale();
+	const localizedKey = `${key}_${locale}`;
+	return product.metadata[localizedKey] || null;
+};
+
 const productToPiece = (product: Stripe.Product): Piece => ({
 	id: product.id,
-	name: product.name,
+	name: getLocalisedValue(product, 'name') ?? product.name,
 	price: getPrice(product),
 	sold: !product.active,
-	description: product.description ?? '',
+	description: getLocalisedValue(product, 'description') ?? product.description ?? '',
 	images: [product.images[0], ...(product.metadata.images?.split(',') ?? [])]
 });
 

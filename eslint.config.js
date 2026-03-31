@@ -27,6 +27,11 @@ export default defineConfig(
 	},
 	{
 		files: ['**/*.svelte', '**/*.svelte.ts', '**/*.svelte.js'],
+		rules: {
+			'svelte/no-navigation-without-resolve': ['error', {
+        resolvedFunctions: ['localisedResolve'],
+      }],
+		},
 		languageOptions: {
 			parserOptions: {
 				projectService: true,

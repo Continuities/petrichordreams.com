@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
 	import { loadCartFromCookie, removeFromCart } from '$lib/cart/index.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import { m } from '$lib/paraglide/messages';
@@ -7,6 +6,7 @@
 	import { HugeiconsIcon } from '@hugeicons/svelte';
 	import { goto, invalidateAll } from '$app/navigation';
 	import { onMount } from 'svelte';
+	import { localisedResolve } from '$lib/utils.js';
 
 	let { data } = $props();
 	let pieces = $derived(data.pieces);
@@ -21,12 +21,12 @@
 	{#if pieces.length === 0}
 		<div class="flex flex-col items-center gap-4 mt-32">
 			<p class="text-3xl">{m.emptyCart()}</p>
-			<a href={resolve('/')} class="underline">{m.continueShopping()}</a>
+			<a href={localisedResolve('/')} class="underline">{m.continueShopping()}</a>
 		</div>
 	{:else}
 		<div class="flex justify-between items-end mb-12">
 			<h1 class="text-3xl font-bold">{m.yourCart()}</h1>
-			<a href={resolve('/')} class="underline">{m.continueShopping()}</a>
+			<a href={localisedResolve('/')} class="underline">{m.continueShopping()}</a>
 		</div>
 		<ul class="space-y-4">
 			{#each pieces as item (item.id)}
@@ -62,7 +62,7 @@
 				</p>
 			</div>
 			<p class="text-sm">{m.taxesAndShipping()}</p>
-			<Button size="lg" class="w-full" onclick={() => goto(resolve('/checkout'))}
+			<Button size="lg" class="w-full" onclick={() => goto(localisedResolve('/checkout'))}
 				>{m.checkout()}</Button
 			>
 		</div>

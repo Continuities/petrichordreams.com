@@ -7,9 +7,9 @@
 	import { getCart } from '$lib/cart/index.svelte';
 	import Badge from '$lib/components/ui/badge/badge.svelte';
 	import { goto } from '$app/navigation';
-	import { resolve } from '$app/paths';
 	import HeaderMobileMenu from './header-mobile-menu.svelte';
 	import HeaderMenuLinks from './header-menu-links.svelte';
+	import { localisedResolve } from '$lib/utils';
 
 	interface Props {
 		headerElement?: HTMLElement;
@@ -35,7 +35,7 @@
 >
 	<div class="flex justify-between items-center max-w-5xl mx-auto py-8 px-4 md:px-0">
 		<HeaderMobileMenu />
-		<a href={resolve('/')}>
+		<a href={localisedResolve('/')}>
 			<img src={logo} alt={m.logo()} class="h-12 w-12" />
 		</a>
 		<HeaderMenuLinks class="hidden md:flex gap-4 mr-auto ml-16" />
@@ -44,7 +44,7 @@
 				size="icon-lg"
 				variant="ghost"
 				class="relative"
-				onclick={() => goto(resolve('/cart'))}
+				onclick={() => goto(localisedResolve('/cart'))}
 			>
 				<HugeiconsIcon icon={ShoppingBag01Icon} class="size-6" />
 				{#if cart.length > 0}

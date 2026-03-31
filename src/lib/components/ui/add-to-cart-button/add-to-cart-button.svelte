@@ -4,7 +4,7 @@
 	import { m } from '$lib/paraglide/messages';
 	import { getCart, addToCart } from '$lib/cart/index.svelte';
 	import { goto } from '$app/navigation';
-	import { resolve } from '$app/paths';
+	import { localisedResolve } from '$lib/utils';
 
 	interface Props {
 		piece: Piece;
@@ -37,9 +37,13 @@
 			</Drawer.Description>
 		</Drawer.Header>
 		<Drawer.Footer class="flex flex-col gap-4">
-			<Button variant="outline" onclick={() => goto(resolve('/cart'))}>{m.viewCart()}</Button>
-			<Button onclick={() => goto(resolve('/checkout'))}>{m.checkout()}</Button>
-			<Button variant="ghost" onclick={() => goto(resolve('/'))}>{m.continueShopping()}</Button>
+			<Button variant="outline" onclick={() => goto(localisedResolve('/cart'))}
+				>{m.viewCart()}</Button
+			>
+			<Button onclick={() => goto(localisedResolve('/checkout'))}>{m.checkout()}</Button>
+			<Button variant="ghost" onclick={() => goto(localisedResolve('/'))}
+				>{m.continueShopping()}</Button
+			>
 		</Drawer.Footer>
 	</Drawer.Content>
 </Drawer.Root>

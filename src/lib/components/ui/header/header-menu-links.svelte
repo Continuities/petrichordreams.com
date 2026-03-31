@@ -2,6 +2,7 @@
 	import { m } from '$lib/paraglide/messages';
 	import { resolve } from '$app/paths';
 	import HeaderLink from './header-link.svelte';
+	import { localisedResolve } from '$lib/utils';
 
 	let { class: className, onclick }: { class?: string; onclick?: () => void } = $props();
 </script>
@@ -10,18 +11,18 @@
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <ul class={className} {onclick}>
 	<li>
-		<HeaderLink href={resolve('/')} label={m.menu_home()} />
+		<HeaderLink href="/" label={m.menu_home()} />
 	</li>
 	<li>
-		<HeaderLink href={resolve('/custom')} label={m.menu_custom()} />
+		<HeaderLink href="/custom" label={m.menu_custom()} />
 	</li>
 	<li>
-		<HeaderLink href={resolve('/rituals')} label={m.menu_rituals()} />
+		<HeaderLink href="/rituals" label={m.menu_rituals()} />
 	</li>
 	<li>
-		<HeaderLink href={resolve('/about')} label={m.menu_about()} />
+		<HeaderLink href="/about" label={m.menu_about()} />
 	</li>
 	<li>
-		<HeaderLink href={resolve('/gallery')} label={m.gallery()} />
+		<HeaderLink href="/gallery" label={m.gallery()} />
 	</li>
 </ul>

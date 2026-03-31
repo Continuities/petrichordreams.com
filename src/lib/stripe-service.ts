@@ -1,5 +1,7 @@
 import Stripe from 'stripe';
-import { STRIPE_SECRET_KEY, BASE_URL } from '$env/static/private';
+import { STRIPE_SECRET_KEY } from '$env/static/private';
+import { localisedResolve } from './utils';
+import { getLocale } from './paraglide/runtime';
 
 type AllowedCountry = Stripe.Checkout.SessionCreateParams.ShippingAddressCollection.AllowedCountry;
 
@@ -55,6 +57,7 @@ export async function createCheckoutSession(pieces: Piece[]): Promise<string> {
 		);
 		const session = await stripe.checkout.sessions.create({
 			ui_mode: 'embedded',
+			locale: getLocale(),
 			line_items: products.map((product) => ({
 				price: (product.default_price as Stripe.Price).id,
 				quantity: 1
@@ -64,7 +67,7 @@ export async function createCheckoutSession(pieces: Piece[]): Promise<string> {
 			},
 			shipping_options: SHIPPING_RATES.map((rate) => ({ shipping_rate: rate })),
 			mode: 'payment',
-			return_url: `${BASE_URL}/thanks?session_id={CHECKOUT_SESSION_ID}`
+			return_url: `${localisedResolve('/thanks')}?session_id={CHECKOUT_SESSION_ID}`
 		});
 		if (!session.client_secret) {
 			throw new Error('No client secret returned');

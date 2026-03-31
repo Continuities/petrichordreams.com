@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
 	import galleryBanner from '$lib/assets/gallery-banner.webp';
 	import * as Card from '$lib/components/ui/card';
 	import { Button } from '$lib/components/ui/button';
 	import { m } from '$lib/paraglide/messages';
 	import PieceCard from '$lib/components/ui/piece-card';
 	import { PUBLIC_INSTAGRAM_USERNAME } from '$env/static/public';
+	import { localisedResolve } from '$lib/utils.js';
 
 	let { data } = $props();
 </script>
@@ -38,7 +38,7 @@
 	<ul class="grid grid-cols-2 md:grid-cols-4 items-center gap-2 md:gap-4">
 		{#each data.pieces as piece (piece.id)}
 			<li>
-				<a href={resolve(`/piece/${piece.id}`)} class="block">
+				<a href={localisedResolve(`/piece/${piece.id}`)} class="block">
 					<PieceCard {piece} />
 				</a>
 			</li>

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
 	import * as Card from '$lib/components/ui/card/index.js';
 	import { m } from '$lib/paraglide/messages';
 	import banner from '$lib/assets/banner.png';
@@ -8,6 +7,7 @@
 	import PieceCard from '$lib/components/ui/piece-card/index.js';
 	import customImage from '$lib/assets/custom.jpg';
 	import ImgPlaceholder from '$lib/components/ui/img-placeholder/img-placeholder.svelte';
+	import { localisedResolve } from '$lib/utils.js';
 
 	let { data } = $props();
 </script>
@@ -29,13 +29,13 @@
 	<ul class="grid grid-cols-2 md:grid-cols-4 items-center gap-2 md:gap-4">
 		{#each data.pieces as piece (piece.id)}
 			<li>
-				<a href={resolve(`/piece/${piece.id}`)} class="block">
+				<a href={localisedResolve(`/piece/${piece.id}`)} class="block">
 					<PieceCard {piece} />
 				</a>
 			</li>
 		{/each}
 		<li>
-			<a href={resolve('/custom')} class="block">
+			<a href={localisedResolve('/custom')} class="block">
 				<PieceCard
 					piece={{
 						name: m.custom(),
@@ -56,7 +56,7 @@
 	<ImgPlaceholder class="h-50 md:h-70 object-cover md:w-1/2" />
 	<div class="text-center h-50 md:h-70 flex flex-col items-center justify-center gap-4 md:w-1/2">
 		<p class="text-2xl">{m.ritualsSubheading()}</p>
-		<Button variant="outline" href={resolve('/rituals')} size="lg" class="text-2xl">
+		<Button variant="outline" href={localisedResolve('/rituals')} size="lg" class="text-2xl">
 			{m.rituals()}
 		</Button>
 	</div>
@@ -68,7 +68,7 @@
 >
 	<div class="text-center h-50 md:h-70 flex flex-col items-center justify-center gap-4 md:w-1/2">
 		<p class="text-2xl">{m.aboutSubheading()}</p>
-		<Button variant="outline" href={resolve('/about')} size="lg" class="text-2xl">
+		<Button variant="outline" href={localisedResolve('/about')} size="lg" class="text-2xl">
 			{m.about()}
 		</Button>
 	</div>
@@ -78,7 +78,7 @@
 <!-- Barter section -->
 <section class="relative flex flex-col items-center justify-center gap-8 my-32">
 	<p class="text-2xl text-center">{m.barterSubheading()}</p>
-	<a href={resolve('/barter')} class="underline text-lg">
+	<a href={localisedResolve('/barter')} class="underline text-lg">
 		{m.barter()}
 	</a>
 </section>
@@ -91,7 +91,7 @@
 			<Card.Title class="text-2xl">{m.seePreviousWorks()}</Card.Title>
 		</Card.Header>
 		<Card.Content>
-			<Button size="lg" class="text-xl" href={resolve('/gallery')}>{m.gallery()}</Button>
+			<Button size="lg" class="text-xl" href={localisedResolve('/gallery')}>{m.gallery()}</Button>
 		</Card.Content>
 	</Card.Root>
 </section>

@@ -8,6 +8,7 @@
 	import { PUBLIC_INSTAGRAM_USERNAME, PUBLIC_UMAMI_WEBSITE_ID } from '$env/static/public';
 	import { HugeiconsIcon } from '@hugeicons/svelte';
 	import { InstagramIcon } from '@hugeicons/core-free-icons';
+	import LocaleSelect from '$lib/components/ui/locale-select';
 
 	onMount(() => {
 		const media = window.matchMedia('(prefers-color-scheme: dark)');
@@ -66,6 +67,7 @@
 		<a href={`https://www.instagram.com/${PUBLIC_INSTAGRAM_USERNAME}`} target="_blank">
 			<HugeiconsIcon icon={InstagramIcon} class="size-6" />
 		</a>
+		<LocaleSelect />
 		{m.footer()}
 	</footer>
 </div>

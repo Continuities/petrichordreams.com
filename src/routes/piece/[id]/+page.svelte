@@ -9,7 +9,11 @@
 <div class="max-w-5xl mx-auto px-8 py-8 flex flex-col gap-8 md:flex-row md:gap-0 md:px-0">
 	<!-- images column -->
 	<section class="md:w-2/3 flex flex-col gap-4">
-		<img src={piece.images[0]} alt={piece.name} class="hidden md:block object-cover w-full mb-4" />
+		<img
+			src={piece.images[0]}
+			alt={piece.name}
+			class="hidden md:block object-contain w-full mb-4 max-h-[80vh]"
+		/>
 		<Carousel.Root class="md:hidden">
 			<Carousel.Content>
 				{#each piece.images as img (img)}

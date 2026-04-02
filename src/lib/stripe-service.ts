@@ -1,7 +1,18 @@
+/**
+ * CMS using on Stripe as a backend.
+ * Additional information is stored in metadata:
+ *   - name_[locale]: Localised name
+ *   - description_[locale]: Localised small description
+ *   - vibe_[locale]: Localised "vibe" text
+ *   - story[#]_[locale]: Localised story paragraphs, numbered to preserve order
+ *   - images: Comma-separated list of additional image URLs (the first image is taken from the product's images array)
+ *   - hidden: If set to "true", the product will be hidden from the storefront
+ */
+
 import Stripe from 'stripe';
 import { STRIPE_SECRET_KEY } from '$env/static/private';
 import { localisedResolve } from './utils';
-import { getLocale } from './paraglide/runtime';
+import { getLocale, locales } from './paraglide/runtime';
 
 type AllowedCountry = Stripe.Checkout.SessionCreateParams.ShippingAddressCollection.AllowedCountry;
 
@@ -27,12 +38,35 @@ const getLocalisedValue = (product: Stripe.Product, key: string): string | null 
 	return product.metadata[localizedKey] || null;
 };
 
+const getArrayValue = (product: Stripe.Product, key: string): string[] => {
+	const currentLocale = getLocale();
+	const pattern = new RegExp(`^${key}(\\d+)_(${locales.join('|')})$`);
+	const value = Object.entries(product.metadata)
+		.map(([key, value]) => {
+			const match = key.match(pattern);
+			if (!match) {
+				return null;
+			}
+			const index = parseInt(match[1], 10);
+			const valueLocale = match[2];
+			if (valueLocale !== currentLocale) {
+				return null;
+			}
+			return { index, value };
+		})
+		.filter(Boolean) as { index: number; value: string }[];
+	value.sort((a, b) => a.index - b.index);
+	return value.map((item) => item.value);
+};
+
 const productToPiece = (product: Stripe.Product): Piece => ({
 	id: product.id,
 	name: getLocalisedValue(product, 'name') ?? product.name,
 	price: getPrice(product),
 	sold: !product.active,
 	description: getLocalisedValue(product, 'description') ?? product.description ?? '',
+	vibe: getLocalisedValue(product, 'vibe') ?? '',
+	story: getArrayValue(product, 'story'),
 	images: [product.images[0], ...(product.metadata.images?.split(',') ?? [])]
 });
 

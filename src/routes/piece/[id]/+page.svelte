@@ -37,10 +37,18 @@
 	<!-- content column -->
 	<section class="md:w-1/3 md:pl-8">
 		<div class="md:sticky md:top-8 flex flex-col gap-4">
-			<h1 class="text-3xl mb-4">{piece.name}</h1>
-			<p>{piece.description}</p>
+			<div class="flex flex-col gap-1">
+				<h1 class="text-3xl">{piece.name}</h1>
+				<h2 class="text-md text-muted-foreground mb-4">{piece.description}</h2>
+			</div>
+			<p>{piece.vibe}</p>
+			{#if piece.story}
+				{#each piece.story as paragraph (paragraph)}
+					<p>{paragraph}</p>
+				{/each}
+			{/if}
 			{#if !piece.sold}
-				<p>${piece.price.CAD} CAD</p>
+				<p class="mt-4">${piece.price.CAD} CAD</p>
 				<AddToCartButton {piece} />
 			{/if}
 		</div>

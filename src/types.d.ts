@@ -12,6 +12,8 @@ interface Piece {
 	name: string;
 	price: CurrencyPrice;
 	description: string;
+	vibe: string;
+	story?: string[];
 	images: string[];
 	sold: boolean;
 }

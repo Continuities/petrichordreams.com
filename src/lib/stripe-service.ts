@@ -3,7 +3,7 @@
  * Additional information is stored in metadata:
  *   - name_[locale]: Localised name
  *   - description_[locale]: Localised small description
- *   - vibe_[locale]: Localised "vibe" text
+ *   - mood_[locale]: Localised "mood" text
  *   - story[#]_[locale]: Localised story paragraphs, numbered to preserve order
  *   - images: Comma-separated list of additional image URLs (the first image is taken from the product's images array)
  *   - hidden: If set to "true", the product will be hidden from the storefront
@@ -65,7 +65,7 @@ const productToPiece = (product: Stripe.Product): Piece => ({
 	price: getPrice(product),
 	sold: !product.active,
 	description: getLocalisedValue(product, 'description') ?? product.description ?? '',
-	vibe: getLocalisedValue(product, 'vibe') ?? '',
+	mood: getLocalisedValue(product, 'mood') ?? '',
 	story: getArrayValue(product, 'story'),
 	images: [product.images[0], ...(product.metadata.images?.split(',') ?? [])]
 });

@@ -41,7 +41,7 @@
 				<h1 class="text-3xl">{piece.name}</h1>
 				<h2 class="text-md text-muted-foreground mb-4">{piece.description}</h2>
 			</div>
-			<p>{piece.vibe}</p>
+			<p>{piece.mood}</p>
 			{#if piece.story}
 				{#each piece.story as paragraph (paragraph)}
 					<p>{paragraph}</p>

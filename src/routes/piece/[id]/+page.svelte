@@ -56,7 +56,7 @@
         {/each}
       {/if}
       {#if !piece.sold}
-        <p class="mt-4">${piece.price.CAD} CAD</p>
+        <p class="mt-4">{m.price({ amount: piece.price.CAD })}</p>
         <AddToCartButton {piece} />
       {/if}
     </div>

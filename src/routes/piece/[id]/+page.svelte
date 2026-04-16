@@ -50,7 +50,8 @@
         </span>
       </div>
       <p>{piece.mood}</p>
-      {#if piece.story}
+      {#if piece.story && piece.story.length > 0}
+        <div class="text-center">~</div>
         {#each piece.story as paragraph (paragraph)}
           <p>{paragraph}</p>
         {/each}

@@ -44,5 +44,6 @@
   "menu_barter": "Troc",
   "menu_about": "À propos",
   "seeMoreOnIntagram": "Découvrez tout ce que je crée et comment je le fais sur Instagram",
-  "previousWorks": "Œuvres Précédentes"
+  "previousWorks": "Œuvres Précédentes",
+  "dimensionsCm": "Hauteur : {heightCm}cm, Largeur : {widthCm}cm"
 }

@@ -44,5 +44,6 @@
   "menu_barter": "Barter",
   "menu_about": "About",
   "seeMoreOnIntagram": "See everything I'm making and how I'm making it on Instagram",
-  "previousWorks": "Previous Works"
+  "previousWorks": "Previous Works",
+  "dimensionsCm": "Height: {heightCm}cm, Width: {widthCm}cm"
 }

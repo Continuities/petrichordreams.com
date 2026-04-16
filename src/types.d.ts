@@ -12,6 +12,8 @@ interface Piece {
 	name: string;
 	price: CurrencyPrice;
 	description: string;
+	heightCm: number;
+	widthCm: number;
 	mood: string;
 	story?: string[];
 	images: string[];

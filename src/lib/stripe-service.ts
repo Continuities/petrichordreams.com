@@ -67,7 +67,9 @@ const productToPiece = (product: Stripe.Product): Piece => ({
 	description: getLocalisedValue(product, 'description') ?? product.description ?? '',
 	mood: getLocalisedValue(product, 'mood') ?? '',
 	story: getArrayValue(product, 'story'),
-	images: [product.images[0], ...(product.metadata.images?.split(',') ?? [])]
+	images: [product.images[0], ...(product.metadata.images?.split(',') ?? [])],
+	heightCm: parseFloat(product.metadata.height_cm ?? '0'),
+	widthCm: parseFloat(product.metadata.width_cm ?? '0')
 });
 
 export async function getPieces(active?: boolean): Promise<Piece[]> {

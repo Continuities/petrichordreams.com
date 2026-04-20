@@ -46,6 +46,7 @@
   "seeMoreOnIntagram": "See everything I'm making and how I'm making it on Instagram",
   "previousWorks": "Previous Works",
   "dimensionsCm": "Height: {heightCm}cm, Width: {widthCm}cm",
+  "ringDimensions": "Ring size: {ringSize}, Band width: {bandWidth}mm, Setting width: {settingWidth}mm",
   "price": [
     {
       "declarations": ["input amount", "local formattedAmount = amount: number"],

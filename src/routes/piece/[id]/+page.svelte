@@ -6,6 +6,10 @@
 
   let { data } = $props();
   let { piece } = $derived(data);
+
+  let hasDimensions = $derived(piece.widthCm && piece.heightCm);
+  let hasRingDimensions = $derived(piece.ringSize && piece.bandWidthMm && piece.settingWidthMm);
+  let showDimensions = $derived(hasDimensions || hasRingDimensions);
 </script>
 
 <div class="max-w-5xl mx-auto px-8 py-8 flex flex-col gap-8 md:flex-row md:gap-0 md:px-0">
@@ -46,11 +50,24 @@
       <div class="flex flex-col gap-1">
         <h1 class="text-3xl">{piece.name}</h1>
         <h2 class="text-md text-muted-foreground">{piece.description}</h2>
-        <span class="text-sm text-muted-foreground mb-4">
-          {m.dimensionsCm({ widthCm: piece.widthCm, heightCm: piece.heightCm })}
-        </span>
+        {#if showDimensions}
+          <span class="text-sm text-muted-foreground mb-4">
+            {#if hasDimensions}
+              {m.dimensionsCm({ widthCm: piece.widthCm!, heightCm: piece.heightCm! })}
+            {/if}
+            {#if hasRingDimensions}
+              {m.ringDimensions({
+                ringSize: piece.ringSize!,
+                bandWidth: piece.bandWidthMm!,
+                settingWidth: piece.settingWidthMm!
+              })}
+            {/if}
+          </span>
+        {/if}
       </div>
-      <p>{piece.mood}</p>
+      {#if piece.mood}
+        <p>{piece.mood}</p>
+      {/if}
       {#if piece.story && piece.story.length > 0}
         <div class="text-center">~</div>
         {#each piece.story as paragraph (paragraph)}

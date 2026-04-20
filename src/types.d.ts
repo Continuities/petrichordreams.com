@@ -8,14 +8,17 @@ type CurrencyPrice = Record<Currency, number>;
 type PieceId = string;
 
 interface Piece {
-	id: PieceId;
-	name: string;
-	price: CurrencyPrice;
-	description: string;
-	heightCm: number;
-	widthCm: number;
-	mood: string;
-	story?: string[];
-	images: string[];
-	sold: boolean;
+  id: PieceId;
+  name: string;
+  price: CurrencyPrice;
+  description: string;
+  heightCm?: number;
+  widthCm?: number;
+  ringSize?: number;
+  bandWidthMm?: number;
+  settingWidthMm?: number;
+  mood?: string;
+  story?: string[];
+  images: string[];
+  sold: boolean;
 }

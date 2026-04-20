@@ -1,7 +1,8 @@
 <script lang="ts">
-  import * as Carousel from '$lib/components/ui/carousel/index.js';
-  import AddToCartButton from '$lib/components/ui/add-to-cart-button/add-to-cart-button.svelte';
+  import * as Carousel from '$lib/components/ui/carousel';
+  import AddToCartButton from '$lib/components/ui/add-to-cart-button';
   import { m } from '$lib/paraglide/messages';
+  import ExternalImg from '$lib/components/ui/external-img';
 
   let { data } = $props();
   let { piece } = $derived(data);
@@ -9,8 +10,8 @@
 
 <div class="max-w-5xl mx-auto px-8 py-8 flex flex-col gap-8 md:flex-row md:gap-0 md:px-0">
   <!-- images column -->
-  <section class="md:w-2/3 flex flex-col gap-4">
-    <img
+  <section class="md:w-2/3 flex flex-col gap-4 relative">
+    <ExternalImg
       src={piece.images[0]}
       alt={piece.name}
       class="hidden md:block object-contain w-full mb-4 max-h-[80vh]"
@@ -33,7 +34,7 @@
     {#if piece.images.length > 1}
       <div class="grid-cols-2 gap-4 hidden md:grid">
         {#each piece.images.slice(1) as img (img)}
-          <img src={img} alt={piece.name} class="object-cover" />
+          <ExternalImg src={img} alt={piece.name} class="object-cover" />
         {/each}
       </div>
     {/if}

@@ -1,5 +1,4 @@
 <script lang="ts">
-  import * as Card from '$lib/components/ui/card/index.js';
   import { m } from '$lib/paraglide/messages';
   import banner from '$lib/assets/main-banner.jpg';
   import previousWorksBanner from '$lib/assets/previous.jpg';
@@ -15,9 +14,13 @@
 
 <!-- Main banner -->
 <section class="relative h-85 md:h-140">
-  <img src={banner} alt={m.banner()} class="absolute h-full w-full object-cover z-0" />
+  <img
+    src={banner}
+    alt={m.banner()}
+    class="absolute h-full w-full object-cover object-bottom sm:object-center z-0"
+  />
   <div
-    class="relative z-1 mx-auto flex flex-col items-center justify-end h-full gap-8 py-8 md:py-24 text-center bg-gradient-to-t from-black/80 to-transparent to-80%"
+    class="text-white relative z-1 mx-auto flex flex-col items-center justify-end h-full gap-8 py-8 md:py-24 text-center bg-gradient-to-t from-black/80 to-transparent to-80%"
   >
     <h1 class="text-4xl">{m.title()}</h1>
     {m.description()}
@@ -87,12 +90,12 @@
 <!-- Previous Works gallery banner -->
 <section class="relative h-85 md:h-140 flex flex-col items-center justify-center">
   <img src={previousWorksBanner} alt={m.banner()} class="absolute h-full w-full object-cover z-0" />
-  <Card.Root class="relative z-1 w-sm mx-auto text-center">
-    <Card.Header>
-      <Card.Title class="text-2xl">{m.seePreviousWorks()}</Card.Title>
-    </Card.Header>
-    <Card.Content>
-      <Button size="lg" class="text-xl" href={localisedResolve('/gallery')}>{m.gallery()}</Button>
-    </Card.Content>
-  </Card.Root>
+  <div
+    class="text-white relative z-1 w-full flex flex-col items-center justify-end h-full gap-4 md:gap-8 py-8 md:py-18 text-center bg-gradient-to-t from-black/80 to-transparent to-80%"
+  >
+    <h1 class="text-2xl md:text-3xl">{m.seePreviousWorks()}</h1>
+    <Button size="lg" class="text-xl md:text-2xl" href={localisedResolve('/gallery')}
+      >{m.gallery()}</Button
+    >
+  </div>
 </section>

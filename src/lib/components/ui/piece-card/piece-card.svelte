@@ -18,7 +18,7 @@
       <ExtImg src={piece.images[0]} alt={piece.name} class="object-cover w-full h-full" />
     </div>
   </div>
-  <Card.Content class="min-h-12">
+  <Card.Content class="min-h-12 flex flex-col justify-center">
     <Card.Title>{piece.name}</Card.Title>
     {#if !piece.sold && piece.price}
       <p>

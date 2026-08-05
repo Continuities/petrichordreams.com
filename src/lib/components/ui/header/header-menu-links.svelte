@@ -18,12 +18,12 @@
     <HeaderLink href="/rituals" label={m.menu_rituals()} />
   </li>
   <li>
-    <HeaderLink href="/about" label={m.menu_about()} />
-  </li>
-  <li>
     <HeaderLink href="/barter" label={m.menu_barter()} />
   </li>
   <li>
     <HeaderLink href="/gallery" label={m.gallery()} />
+  </li>
+  <li>
+    <HeaderLink href="/about" label={m.menu_about()} />
   </li>
 </ul>

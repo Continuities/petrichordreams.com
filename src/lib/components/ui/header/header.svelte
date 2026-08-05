@@ -3,7 +3,7 @@
   import { m } from '$lib/paraglide/messages';
   import { Button } from '$lib/components/ui/button';
   import { HugeiconsIcon } from '@hugeicons/svelte';
-  import { ShoppingBag01Icon } from '@hugeicons/core-free-icons';
+  import { MoneyBag01Icon } from '@hugeicons/core-free-icons';
   import { getCart } from '$lib/cart/index.svelte';
   import Badge from '$lib/components/ui/badge/badge.svelte';
   import { goto } from '$app/navigation';
@@ -46,7 +46,7 @@
         class="relative"
         onclick={() => goto(localisedResolve('/cart'))}
       >
-        <HugeiconsIcon icon={ShoppingBag01Icon} class="size-6" />
+        <HugeiconsIcon icon={MoneyBag01Icon} class="size-6" />
         {#if cart.length > 0}
           <div class="absolute -top-1 -right-1 bounce-in">
             <Badge class="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums">

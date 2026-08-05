@@ -45,10 +45,10 @@
   </section>
 
   <!-- content column -->
-  <section class="md:w-1/3 md:pl-8">
+  <section class="md:w-1/3 md:pl-8 font-extralight tracking-wide">
     <div class="md:sticky md:top-8 flex flex-col gap-4">
       <div class="flex flex-col gap-1">
-        <h1 class="text-3xl">{piece.name}</h1>
+        <h1 class="text-3xl font-teutonic tracking-widest">{piece.name}</h1>
         <h2 class="text-md text-muted-foreground">{piece.description}</h2>
         {#if showDimensions}
           <span class="text-sm text-muted-foreground mb-4">

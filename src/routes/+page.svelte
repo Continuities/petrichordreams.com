@@ -35,7 +35,7 @@
     "
   >
     <h1 class="text-5xl font-teutonic tracking-widest">{m.title()}</h1>
-    <div class="px-16 tracking-wide font-extralight">{m.description()}</div>
+    <div class="px-16 text-lg tracking-wide font-extralight">{m.description()}</div>
   </div>
 </section>
 
@@ -104,9 +104,14 @@
 <!-- Barter section -->
 <section class="relative flex flex-col items-center justify-center gap-8 my-32">
   <p class="text-2xl font-extralight tracking-wide text-center">{m.barterSubheading()}</p>
-  <a href={localisedResolve('/barter')} class="underline text-lg font-teutonic tracking-widest">
+  <Button
+    href={localisedResolve('/barter')}
+    variant="outline"
+    size="lg"
+    class="font-teutonic tracking-widest text-2xl"
+  >
     {m.barter()}
-  </a>
+  </Button>
 </section>
 
 <!-- Previous Works gallery banner -->

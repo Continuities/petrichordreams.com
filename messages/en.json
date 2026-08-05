@@ -44,7 +44,8 @@
   "menu_rituals": "Rituals",
   "menu_barter": "Barter",
   "menu_about": "About",
-  "seeMoreOnIntagram": "See everything I'm making and how I'm making it on Instagram",
+  "menu_faq": "FAQ",
+  "seeMoreOnIntagram": "See everything that Petrichor is making and how it is made on Instagram",
   "previousWorks": "Previous Works",
   "dimensionsCm": "Height: {heightCm}cm, Width: {widthCm}cm",
   "ringDimensions": "Ring size: {ringSize}, Band width: {bandWidth}mm, Setting width: {settingWidth}mm",
@@ -55,5 +56,8 @@
         "amount=*": "${formattedAmount} CAD"
       }
     }
-  ]
+  ],
+  "faq": "Frequently Asked Questions",
+  "faq_question": "Question Placeholder",
+  "faq_answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 }

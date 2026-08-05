@@ -26,4 +26,7 @@
   <li>
     <HeaderLink href="/about" label={m.menu_about()} />
   </li>
+  <li>
+    <HeaderLink href="/faq" label={m.menu_faq()} />
+  </li>
 </ul>

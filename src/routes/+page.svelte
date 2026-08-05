@@ -21,20 +21,21 @@
   />
   <div
     class="
-      text-white
+      hidden md:block
       absolute w-full h-full backdrop-blur-xs
       mask-[linear-gradient(to_bottom,black,rgba(0,0,0,0.5)_40%,transparent_50%,rgba(0,0,0,0.5)_60%,black)]
     "
   ></div>
   <div
     class="
+    text-white
       relative z-1 mx-auto flex flex-col items-center justify-end
       h-full gap-8 py-8 md:py-24 text-center bg-linear-to-t
       from-black/80 to-transparent to-80%
     "
   >
-    <h1 class="text-4xl font-teutonic">{m.title()}</h1>
-    {m.description()}
+    <h1 class="text-5xl font-teutonic tracking-widest">{m.title()}</h1>
+    <div class="px-16">{m.description()}</div>
   </div>
 </section>
 

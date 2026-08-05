@@ -35,13 +35,13 @@
     "
   >
     <h1 class="text-5xl font-teutonic tracking-widest">{m.title()}</h1>
-    <div class="px-16">{m.description()}</div>
+    <div class="px-16 tracking-wide font-extralight">{m.description()}</div>
   </div>
 </section>
 
 <!-- Available Pieces shop -->
 <section class="mx-auto max-w-5xl my-16 px-4 md:px-0">
-  <h2 class="text-2xl mb-8">{m.available()}</h2>
+  <h2 class="font-teutonic tracking-wider text-3xl mb-8">{m.available()}</h2>
   <ul class="grid grid-cols-2 md:grid-cols-4 items-center gap-2 md:gap-4">
     {#each data.pieces as piece (piece.id)}
       <li>
@@ -71,8 +71,13 @@
 >
   <img src={rituals} alt={m.rituals()} class="h-50 md:h-70 object-cover md:w-1/2" />
   <div class="text-center h-50 md:h-70 flex flex-col items-center justify-center gap-4 md:w-1/2">
-    <p class="text-2xl">{m.ritualsSubheading()}</p>
-    <Button variant="outline" href={localisedResolve('/rituals')} size="lg" class="text-2xl">
+    <p class="text-xl font-extralight tracking-wide">{m.ritualsSubheading()}</p>
+    <Button
+      variant="outline"
+      href={localisedResolve('/rituals')}
+      size="lg"
+      class="font-teutonic tracking-widest text-2xl"
+    >
       {m.rituals()}
     </Button>
   </div>
@@ -83,8 +88,13 @@
   class="relative max-w-5xl mb-16 px-4 mx-auto flex flex-col-reverse md:flex-row md:px-0 md:items-center"
 >
   <div class="text-center h-50 md:h-70 flex flex-col items-center justify-center gap-4 md:w-1/2">
-    <p class="text-2xl">{m.aboutSubheading()}</p>
-    <Button variant="outline" href={localisedResolve('/about')} size="lg" class="text-2xl">
+    <p class="text-xl font-extralight tracking-wide">{m.aboutSubheading()}</p>
+    <Button
+      variant="outline"
+      href={localisedResolve('/about')}
+      size="lg"
+      class="font-teutonic tracking-widest text-2xl"
+    >
       {m.about()}
     </Button>
   </div>
@@ -93,8 +103,8 @@
 
 <!-- Barter section -->
 <section class="relative flex flex-col items-center justify-center gap-8 my-32">
-  <p class="text-2xl text-center">{m.barterSubheading()}</p>
-  <a href={localisedResolve('/barter')} class="underline text-lg">
+  <p class="text-2xl font-extralight tracking-wide text-center">{m.barterSubheading()}</p>
+  <a href={localisedResolve('/barter')} class="underline text-lg font-teutonic tracking-widest">
     {m.barter()}
   </a>
 </section>
@@ -105,9 +115,11 @@
   <div
     class="text-white relative z-1 w-full flex flex-col items-center justify-end h-full gap-4 md:gap-8 py-8 md:py-18 text-center bg-linear-to-t from-black/80 to-transparent to-80%"
   >
-    <h1 class="text-2xl md:text-3xl">{m.seePreviousWorks()}</h1>
-    <Button size="lg" class="text-xl md:text-2xl" href={localisedResolve('/gallery')}
-      >{m.gallery()}</Button
+    <h1 class="font-extralight tracking-wide text-2xl md:text-3xl">{m.seePreviousWorks()}</h1>
+    <Button
+      size="lg"
+      class="text-xl md:text-2xl font-teutonic tracking-widest"
+      href={localisedResolve('/gallery')}>{m.gallery()}</Button
     >
   </div>
 </section>

@@ -38,7 +38,7 @@
     <a href={localisedResolve('/')}>
       <img src={logo} alt={m.logo()} class="h-24 w-24" />
     </a>
-    <HeaderMenuLinks class="hidden md:flex gap-4 mr-auto ml-16" />
+    <HeaderMenuLinks class="hidden md:flex gap-4 mr-auto ml-16 text-xl" />
     <div class="flex">
       <Button
         size="icon-lg"

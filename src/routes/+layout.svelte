@@ -65,7 +65,7 @@
   <main class="bg-background text-foreground">
     {@render children()}
   </main>
-  <footer class="mt-auto flex flex-col items-center py-8 gap-8">
+  <footer class="mt-auto flex flex-col items-center py-8 gap-8 font-extralight tracking-wide">
     <a href={`https://www.instagram.com/${PUBLIC_INSTAGRAM_USERNAME}`} target="_blank">
       <HugeiconsIcon icon={InstagramIcon} class="size-6" />
     </a>

@@ -1,73 +1,75 @@
 <script lang="ts">
-	import favicon from '$lib/assets/favicon.svg';
-	import { onMount } from 'svelte';
-	import { m } from '$lib/paraglide/messages';
-	import '../app.css';
-	import Header from '$lib/components/ui/header';
-	import { loadCartFromCookie } from '$lib/cart/index.svelte';
-	import { PUBLIC_INSTAGRAM_USERNAME, PUBLIC_UMAMI_WEBSITE_ID } from '$env/static/public';
-	import { HugeiconsIcon } from '@hugeicons/svelte';
-	import { InstagramIcon } from '@hugeicons/core-free-icons';
-	import LocaleSelect from '$lib/components/ui/locale-select';
+  import favicon from '$lib/assets/favicon.svg';
+  import { onMount } from 'svelte';
+  import { m } from '$lib/paraglide/messages';
+  import '../app.css';
+  import '../fonts.css';
 
-	onMount(() => {
-		const media = window.matchMedia('(prefers-color-scheme: dark)');
-		const handler = (e: MediaQueryListEvent) => {
-			document.documentElement.classList.toggle('dark', e.matches);
-		};
-		media.addEventListener('change', handler);
-		loadCartFromCookie();
-		return () => media.removeEventListener('change', handler);
-	});
+  import Header from '$lib/components/ui/header';
+  import { loadCartFromCookie } from '$lib/cart/index.svelte';
+  import { PUBLIC_INSTAGRAM_USERNAME, PUBLIC_UMAMI_WEBSITE_ID } from '$env/static/public';
+  import { HugeiconsIcon } from '@hugeicons/svelte';
+  import { InstagramIcon } from '@hugeicons/core-free-icons';
+  import LocaleSelect from '$lib/components/ui/locale-select';
 
-	let { children } = $props();
-	let floatingHeader = $state(false);
-	let scrollingUp = $state(false);
-	let lastScrollY = $state(0);
-	let headerElement: HTMLElement | undefined = $state();
-	let headerHeight = $derived(headerElement?.clientHeight ?? 0);
+  onMount(() => {
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+    const handler = (e: MediaQueryListEvent) => {
+      document.documentElement.classList.toggle('dark', e.matches);
+    };
+    media.addEventListener('change', handler);
+    loadCartFromCookie();
+    return () => media.removeEventListener('change', handler);
+  });
+
+  let { children } = $props();
+  let floatingHeader = $state(false);
+  let scrollingUp = $state(false);
+  let lastScrollY = $state(0);
+  let headerElement: HTMLElement | undefined = $state();
+  let headerHeight = $derived(headerElement?.clientHeight ?? 0);
 </script>
 
 <svelte:head>
-	<title>{m.title()}</title>
-	<link rel="icon" href={favicon} />
-	<script async src="//www.instagram.com/embed.js"></script>
-	<script>
-		if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-			document.documentElement.classList.add('dark');
-		}
-	</script>
-	<script
-		defer
-		src="https://cloud.umami.is/script.js"
-		data-website-id={PUBLIC_UMAMI_WEBSITE_ID}
-	></script>
+  <title>{m.title()}</title>
+  <link rel="icon" href={favicon} />
+  <script async src="//www.instagram.com/embed.js"></script>
+  <script>
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script
+    defer
+    src="https://cloud.umami.is/script.js"
+    data-website-id={PUBLIC_UMAMI_WEBSITE_ID}
+  ></script>
 </svelte:head>
 
 <svelte:window
-	on:scroll={() => {
-		scrollingUp = window.scrollY < lastScrollY;
-		const scrolledPast = headerElement ? window.scrollY > headerElement.offsetHeight : false;
-		floatingHeader = scrolledPast || scrollingUp;
-		lastScrollY = window.scrollY;
-	}}
+  on:scroll={() => {
+    scrollingUp = window.scrollY < lastScrollY;
+    const scrolledPast = headerElement ? window.scrollY > headerElement.offsetHeight : false;
+    floatingHeader = scrolledPast || scrollingUp;
+    lastScrollY = window.scrollY;
+  }}
 />
 
 <Header bind:headerElement floating={floatingHeader} shownFloating={scrollingUp} />
 <div
-	style={floatingHeader
-		? `padding-top: ${headerHeight}px;`
-		: `min-height:calc(100vh - ${headerHeight}px)`}
-	class="flex flex-col min-h-screen"
+  style={floatingHeader
+    ? `padding-top: ${headerHeight}px;`
+    : `min-height:calc(100vh - ${headerHeight}px)`}
+  class="flex flex-col min-h-screen"
 >
-	<main class="bg-background text-foreground">
-		{@render children()}
-	</main>
-	<footer class="mt-auto flex flex-col items-center py-8 gap-8">
-		<a href={`https://www.instagram.com/${PUBLIC_INSTAGRAM_USERNAME}`} target="_blank">
-			<HugeiconsIcon icon={InstagramIcon} class="size-6" />
-		</a>
-		<LocaleSelect />
-		{m.footer()}
-	</footer>
+  <main class="bg-background text-foreground">
+    {@render children()}
+  </main>
+  <footer class="mt-auto flex flex-col items-center py-8 gap-8">
+    <a href={`https://www.instagram.com/${PUBLIC_INSTAGRAM_USERNAME}`} target="_blank">
+      <HugeiconsIcon icon={InstagramIcon} class="size-6" />
+    </a>
+    <LocaleSelect />
+    {m.footer()}
+  </footer>
 </div>

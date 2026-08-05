@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { ParaglideMessage } from '@inlang/paraglide-js-svelte';
   import { m } from '$lib/paraglide/messages';
   import customImage from '$lib/assets/custom.jpg';
 </script>
@@ -9,6 +10,16 @@
     <h1 class="text-3xl font-bold mb-6 font-teutonic tracking-widest">{m.custom()}</h1>
     <p>{m.customDescription_1()}</p>
     <p>{m.customDescription_2()}</p>
-    <p>{m.customDescription_3()}</p>
+    <p>
+      <ParaglideMessage message={m.customDescription_3}>
+        {#snippet mailto({ children, options })}
+          <a
+            class="underline"
+            target="_blank"
+            href={`mailto:${options.to}?subject=${options.subject}`}>{@render children?.()}</a
+          >
+        {/snippet}
+      </ParaglideMessage>
+    </p>
   </div>
 </section>

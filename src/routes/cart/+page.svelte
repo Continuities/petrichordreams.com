@@ -19,7 +19,7 @@
 
 <section class="mx-auto max-w-5xl my-8 px-4 md:px-0 font-extralight tracking-wide">
   {#if pieces.length === 0}
-    <div class="flex flex-col items-center gap-4 mt-32">
+    <div class="flex flex-col items-center gap-4 mt-32 font-teutonic tracking-widest">
       <p class="text-3xl">{m.emptyCart()}</p>
       <a href={localisedResolve('/')} class="underline">{m.continueShopping()}</a>
     </div>

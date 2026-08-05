@@ -29,12 +29,14 @@
 >
 
 <Drawer.Root bind:open={show}>
-  <Drawer.Content class="max-w-md ml-auto">
+  <Drawer.Content class="max-w-md ml-auto text-xl font-teutonic tracking-widest">
     <Drawer.Header>
-      <Drawer.Title>{m.itemAddedToCart()}</Drawer.Title>
+      <Drawer.Title class="text-xl font-teutonic tracking-widest"
+        >{m.itemAddedToCart()}</Drawer.Title
+      >
       <Drawer.Description class="flex gap-4 mt-6">
         <img src={piece.images[0]} alt={piece.name} class="object-cover w-32" />
-        <p>{piece.name}</p>
+        <p class="font-sans font-extralight tracking-wide">{piece.name}</p>
       </Drawer.Description>
     </Drawer.Header>
     <Drawer.Footer class="flex flex-col gap-4">
